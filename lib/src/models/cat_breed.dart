@@ -1,5 +1,5 @@
 import 'weight.dart';
-import 'image.dart';
+import 'cat_image.dart';
 
 class CatBreed {
   final Weight weight;
@@ -39,7 +39,7 @@ class CatBreed {
   final String? wikipediaUrl;
   final int hypoallergenic;
   final String? referenceImageId;
-  final Image? image;
+  final CatImage? image;
   final int? catFriendly;
   final int? bidability;
 
@@ -170,7 +170,7 @@ class CatBreed {
       wikipediaUrl: map['wikipedia_url'],
       hypoallergenic: map['hypoallergenic'] as int,
       referenceImageId: map['reference_image_id'],
-      image: map['image'] != null ? Image.fromJson(map['image']) : null,
+      image: map['image'] != null ? CatImage.fromJson(map['image']) : null,
       catFriendly: map['cat_friendly'],
       bidability: map['bidability'],
     );

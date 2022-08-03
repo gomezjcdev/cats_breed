@@ -1,11 +1,11 @@
-class Image {
+class CatImage {
 
   final String id;
   final int width;
   final int height;
   final String url;
 
-  Image({
+  CatImage({
     required this.id,
     required this.width,
     required this.height,
@@ -21,8 +21,8 @@ class Image {
     };
   }
 
-  factory Image.fromJson(Map<String, dynamic> map) {
-    return Image(
+  factory CatImage.fromJson(Map<String, dynamic> map) {
+    return CatImage(
       id: map['id'] as String,
       width: map['width'] as int,
       height: map['height'] as int,
