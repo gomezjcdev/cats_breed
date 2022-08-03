@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Request {
-  var client = http.Client();
-  final String url = "https://api.thecatapi.com/v1/breeds";
+  final _client = http.Client();
+  final String _apiUrl = "https://api.thecatapi.com/v1";
 
   static const int _requestSeconds = 10;
 
-  Future<Map<String, String>> getHeaders() async {
+  Future<Map<String, String>> _headers() async {
     return {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -16,13 +16,13 @@ class Request {
     };
   }
 
-  Future<Map<String, dynamic>> getRequest() async {
+  Future<List<dynamic>> getRequest(String url) async {
     try {
-      var response = await client.get(Uri.parse(url), headers: await getHeaders())
+      var response = await _client.get(Uri.parse('$_apiUrl/$url'), headers: await _headers())
           .timeout(const Duration(seconds: _requestSeconds))
           .catchError((e) => throw e.toString());
 
-      final body = jsonDecode(response.body);
+      final List<dynamic>  body = jsonDecode(response.body);
       if (response.statusCode != 200) {
         throw body;
       }
@@ -33,7 +33,7 @@ class Request {
       print(t);
       rethrow;
     } finally {
-      client.close();
+      _client.close();
     }
   }
 
