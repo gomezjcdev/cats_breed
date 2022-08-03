@@ -4,14 +4,15 @@ import '../../models/cat_image.dart';
 
 class BreedImage extends StatelessWidget {
   final CatImage? catImage;
+  final double maxHeight;
 
-  const BreedImage({Key? key, this.catImage}) : super(key: key);
+  const BreedImage({Key? key, this.catImage, this.maxHeight = 300}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(
-        maxHeight: 300
+      constraints: BoxConstraints(
+        maxHeight: maxHeight
       ),
       child: catImage != null
           ? FadeInImage.assetNetwork(

@@ -30,7 +30,7 @@ class _CatListState extends State<CatList> {
               onChanged: (value) => BlocProvider.of<CatBreedBloc>(context, listen: false).add(SearchByName(value)),
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: 'Buscar',
+                hintText: 'Buscar por raza',
                 suffixIcon: Icon(Icons.search),
               ),
             ),
