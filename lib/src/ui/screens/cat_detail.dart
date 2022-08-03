@@ -30,7 +30,7 @@ class _CatDetailState extends State<CatDetail> {
             body: Container(),
           );
         }
-        
+
         return Scaffold(
           appBar: AppBar(title: const Text('CatBreeds')),
           body: const Center(child: Text('Ocurrio un error al buscar la raza.')),

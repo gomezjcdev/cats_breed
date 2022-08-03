@@ -10,3 +10,9 @@ class BreedById extends CatBreedEvent {
 
   BreedById(this.id);
 }
+
+class SearchByName extends CatBreedEvent {
+  final String name;
+
+  SearchByName(this.name);
+}

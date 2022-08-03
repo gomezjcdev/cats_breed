@@ -26,7 +26,8 @@ class _CatListState extends State<CatList> {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            TextFormField(
+            TextField(
+              onChanged: (value) => BlocProvider.of<CatBreedBloc>(context, listen: false).add(SearchByName(value)),
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Buscar',
