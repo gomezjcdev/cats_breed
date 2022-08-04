@@ -1,16 +1,32 @@
-# pragma_test
+# Cats Breeds
 
-A new Flutter project.
+Folder structure is Function-first [link](https://gist.github.com/arnausd23/137bab46215d69023729a1b30fb3ec9b#function-first)
 
-## Getting Started
+## Packages used
 
-This project is a starting point for a Flutter application.
+- flutter_bloc for state management [link](https://pub.dev/packages/flutter_bloc)
+- http [link](https://pub.dev/packages/http)
 
-A few resources to get you started if this is your first Flutter project:
+### for testing
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- mocktail [link](https://pub.dev/packages/mocktail)
+- test [link](https://pub.dev/packages/test)
+- bloc_test [link](https://pub.dev/packages/bloc_test)
+- equatable [link](https://pub.dev/packages/equatable)
+- network_image_mock [link](https://pub.dev/packages/network_image_mock)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation
+
+```
+$ git clone git@github.com:gomezjcdev/cats_breed.git
+
+$ cd cats_breed
+
+$ flutter pub get
+```
+
+## Testing
+
+```
+$  flutter test -r expanded
+```
