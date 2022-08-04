@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:pragma_test/src/utils/extensions.dart';
+import 'package:equatable/equatable.dart';
 
 import '../models/cat_breed.dart';
 import '../repositories/cat_breed_repository.dart';
-import '../utils/request.dart';
 
 part 'cat_breed_event.dart';
 
@@ -14,10 +14,12 @@ part 'cat_breed_state.dart';
 
 class CatBreedBloc extends Bloc<CatBreedEvent, CatBreedState> {
 
+  late CatBreedRepository _repository;
   List<CatBreed> _catBreedsCache = [];
 
   CatBreedBloc({required CatBreedRepository repository})
       : super(const CatBreedState()) {
+    _repository = repository;
     on<AllBreedsEvent>(_allBreeds);
     on<BreedById>(_breedById);
     on<SearchByName>(_breedName);
@@ -30,10 +32,10 @@ class CatBreedBloc extends Bloc<CatBreedEvent, CatBreedState> {
         state.copyWith(listLoading: true),
       );
 
-      final response = await Request().getRequest('breeds');
+      final response = await _repository.allBreeds();
 
-      // creates a cache of the original list
-      _catBreedsCache = List.from(response.map((value) => CatBreed.fromJson(value)));
+      // refresh the cache list
+      _catBreedsCache = response;
       emit(
         state.copyWith(
           catBreeds: _catBreedsCache,
@@ -57,6 +59,11 @@ class CatBreedBloc extends Bloc<CatBreedEvent, CatBreedState> {
   }
 
   Future<void> _breedName(SearchByName event, Emitter<CatBreedState> emit) async {
+
+    if (_catBreedsCache.isEmpty) {
+      _catBreedsCache = state.catBreeds;
+    }
+
     // if the field it's empty apply the cache list
     if (event.name == '') {
       emit(state.copyWith(catBreeds: _catBreedsCache));

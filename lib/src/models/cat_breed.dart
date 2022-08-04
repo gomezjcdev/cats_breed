@@ -1,7 +1,9 @@
+import 'package:equatable/equatable.dart';
+
 import 'weight.dart';
 import 'cat_image.dart';
 
-class CatBreed {
+class CatBreed extends Equatable {
   final Weight weight;
   final String id;
   final String name;
@@ -43,7 +45,7 @@ class CatBreed {
   final int? catFriendly;
   final int? bidability;
 
-  CatBreed({
+  const CatBreed({
     required this.weight,
     required this.id,
     required this.name,
@@ -175,4 +177,7 @@ class CatBreed {
       bidability: map['bidability'],
     );
   }
+
+  @override
+  List<Object?> get props => [id, name];
 }

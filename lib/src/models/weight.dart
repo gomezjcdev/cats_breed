@@ -1,8 +1,10 @@
-class Weight {
+import 'package:equatable/equatable.dart';
+
+class Weight extends Equatable {
   final String imperial;
   final String metric;
 
-  Weight({
+  const Weight({
     required this.imperial,
     required this.metric,
   });
@@ -20,4 +22,7 @@ class Weight {
       metric: map['metric'] as String,
     );
   }
+
+  @override
+  List<Object?> get props => [imperial, metric];
 }

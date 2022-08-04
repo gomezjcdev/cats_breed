@@ -1,11 +1,12 @@
-class CatImage {
+import 'package:equatable/equatable.dart';
 
+class CatImage extends Equatable {
   final String id;
   final int width;
   final int height;
   final String url;
 
-  CatImage({
+  const CatImage({
     required this.id,
     required this.width,
     required this.height,
@@ -29,4 +30,7 @@ class CatImage {
       url: map['url'] as String,
     );
   }
+
+  @override
+  List<Object> get props => [id, width, height, url];
 }

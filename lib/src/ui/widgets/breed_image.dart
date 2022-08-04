@@ -11,6 +11,7 @@ class BreedImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
+      key: const Key('breed_image_constrained_box'),
       constraints: BoxConstraints(
         maxHeight: maxHeight
       ),
